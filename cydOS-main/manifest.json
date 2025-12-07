@@ -3,18 +3,18 @@
   "version": "1.0",
   "builds": [
     {
-      "chipFamily": "ESP32", 
+      "chipFamily": "ESP32",
       "parts": [
         {
-          "path": "https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/.pio/build/esp32dev/bootloader.bin",
+          "path": "https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/bootloader.bin",
           "offset": 4096
         },
         {
-          "path": "https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/.pio/build/esp32dev/partitions.bin",
+          "path": "https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/partitions.bin",
           "offset": 32768
         },
         {
-          "path": "https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/.pio/build/esp32dev/firmware.bin",
+          "path": "https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/firmware.bin",
           "offset": 65536
         }
       ]
