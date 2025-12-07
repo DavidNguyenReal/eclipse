@@ -1,25 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>cydOS Web Flasher</title>
+    <title>cydOS - No Button Flasher</title>
     <script type="module" src="https://unpkg.com/esp-web-tools@9/dist/web/install-button.js?module"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+            background: #0d1117;
+            color: white;
+        }
+        .step {
+            background: #161b22;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .highlight {
+            background: #ff6b00;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>⚡ cydOS ESP32-CYD Flasher</h1>
+    <p><strong>NO BUTTONS NEEDED!</strong></p>
+    
+    <div class="step">
+        <h2>🟢 Step 1: Connect USB</h2>
+        <p>Plug your ESP32-CYD into computer via USB cable.</p>
+    </div>
+    
+    <div class="step">
+        <h2>🟡 Step 2: Auto-Enter Flash Mode</h2>
+        <div class="highlight">
+            <p><strong>TRY THIS FIRST (usually works):</strong></p>
+            <p>1. Click "Flash cydOS" button below</p>
+            <p>2. Wait for device list to appear</p>
+            <p>3. Select your ESP32</p>
+        </div>
+        
+        <p><strong>If that fails, try this:</strong></p>
+        <p>1. <strong>UNPLUG USB</strong> from ESP32</p>
+        <p>2. Click "Flash cydOS" button below</p>
+        <p>3. When it says "Looking for devices..." <strong>PLUG IN USB</strong></p>
+        <p>4. Select your ESP32 from the list</p>
+    </div>
+    
+    <div class="step">
+        <h2>🔴 Step 3: Manual Mode (Only if above fails)</h2>
+        <p><strong>For boards without buttons:</strong></p>
+        <p>1. Use a wire/paperclip to <strong>connect these two pins</strong>:</p>
+        <img src="https://i.imgur.com/GPIO0_GND.png" width="200" style="border: 2px solid white; margin: 10px 0;">
+        <p>2. Click "Flash cydOS"</p>
+        <p>3. Select your ESP32</p>
+        <p>4. <strong>Remove the wire</strong></p>
+    </div>
     
     <esp-web-install-button 
         manifest="https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/manifest.json">
-        <button>Click to Flash cydOS</button>
+        <button>⚡ Flash cydOS (Click Here)</button>
     </esp-web-install-button>
     
-    <p><strong>Instructions:</strong></p>
-    <ol>
-        <li>Connect ESP32-CYD via USB</li>
-        <li>Hold BOOT button on ESP32</li>
-        <li>Click button above</li>
-        <li>Select your ESP32 from list</li>
-        <li>Release BOOT button</li>
-        <li>Wait for flashing to complete</li>
-    </ol>
+    <p><small>Works on Chrome/Edge. No software installation needed!</small></p>
 </body>
 </html>
