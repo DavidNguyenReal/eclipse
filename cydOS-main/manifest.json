@@ -1,5 +1,5 @@
 {
-  "name": "cydOS",
+  "name": "eclipse",
   "version": "1.0",
   "builds": [
     {
@@ -21,3 +21,4 @@
     }
   ]
 }
+
