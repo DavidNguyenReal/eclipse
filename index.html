@@ -35,11 +35,19 @@
             border-radius: 8px;
             margin: 20px 0;
         }
+        #status {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #1e40af;
+        }
     </style>
 </head>
 <body>
     <h1>⚡ cydOS ESP32-CYD Flasher</h1>
     <p><strong>NO BUTTONS NEEDED!</strong></p>
+    
+    <div id="status">✅ Ready to flash</div>
     
     <div class="step">
         <h2>🟢 Step 1: Connect USB</h2>
@@ -72,11 +80,37 @@
         <p>4. <strong>Remove the wire</strong></p>
     </div>
     
+    <!-- CACHE BUSTER VERSION - MANIFEST_V2.JSON -->
     <esp-web-install-button 
         manifest="https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/manifest.json">
         <button>⚡ Flash cydOS (Click Here)</button>
     </esp-web-install-button>
     
     <p><small>Works on Chrome/Edge. No software installation needed!</small></p>
+    
+    <script>
+        // Force cache clearing
+        const version = Date.now();
+        const button = document.querySelector('esp-web-install-button');
+        
+        // Update manifest URL with cache buster
+        button.manifest = `https://raw.githubusercontent.com/DavidNguyenReal/eclipse/main/cydOS-main/manifest.json?v=${version}`;
+        
+        // Debug logging
+        button.addEventListener('state-changed', (e) => {
+            console.log('State:', e.detail.state);
+            const status = document.getElementById('status');
+            if (e.detail.state === 'ERROR') {
+                status.innerHTML = `❌ ${e.detail.message}`;
+                status.style.background = '#dc2626';
+            } else if (e.detail.state === 'INSTALLING') {
+                status.innerHTML = '⚡ Flashing...';
+                status.style.background = '#ea580c';
+            } else if (e.detail.state === 'SUCCESS') {
+                status.innerHTML = '✅ Flash Complete!';
+                status.style.background = '#16a34a';
+            }
+        });
+    </script>
 </body>
 </html>
