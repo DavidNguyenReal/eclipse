@@ -5,11 +5,10 @@
   "builds": [
     {
       "chipFamily": "ESP32",
-      "improv": true,
       "parts": [
-        { 
+        {
           "path": "https://github.com/DavidNguyenReal/eclipse/raw/main/cydOS-main/firmware.bin",
-          "offset": 0x10000 
+          "offset": 0x10000
         }
       ]
     }
